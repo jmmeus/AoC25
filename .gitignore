@@ -43,6 +43,7 @@ var/
 *.dylib
 build/
 cmake-build*/
+bin/
 
 # Rust specific ignores
 target/
