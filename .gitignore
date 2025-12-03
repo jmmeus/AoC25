@@ -1,0 +1,66 @@
+# .gitignore for a multi-language project (Python, C, Rust, VSCode)
+
+# Default ignores
+.DS_Store
+.env
+.env.*
+.history/
+/venv/
+/htmlcov/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+build/
+develop-eggs/
+dist/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.manifest
+*.spec
+
+# Python specific ignores
+.pytest_cache/
+.coverage
+.mypy_cache/
+
+# C specific ignores
+*.o
+*.out
+*.exe
+*.obj
+*.bin
+*.dll
+*.so
+*.dylib
+build/
+cmake-build*/
+
+# Rust specific ignores
+target/
+Cargo.lock
+
+# VSCode specific ignores
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Logs and databases
+*.log
+*.sqlite
+*.db
+
+# OS generated files
+.Trashes
+ehthumbs.db
+Thumbs.db
