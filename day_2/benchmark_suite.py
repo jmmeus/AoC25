@@ -37,8 +37,8 @@ print("-" * 45)
 benchmarks = [
     ("Python", "cd .. && python3 day_2/part1.py"),
     ("Python (Par)", "python3 part1_parallel.py"),
-    ("C", "cd c && ./main"),
-    ("C (Par)", "cd c && ./main_parallel"),
+    ("C", "cd c && ./bin/main"),
+    ("C (Par)", "cd c && ./bin/main_parallel"),
     ("Rust", "cd rust && ./target/release/rust"),
     ("Rust (Par)", "cd rust && ./target/release/parallel")
 ]
