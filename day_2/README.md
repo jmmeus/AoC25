@@ -14,9 +14,9 @@ A benchmarking suite (`benchmark_suite.py`) was used to compare the performance 
 
 | Language        | Avg Time   | Speedup    |
 | :-------------- | :--------- | :--------- |
-| Rust (Par)      | 0.002383   | 352.73x    |
-| C (Par)         | 0.003131   | 268.40x    |
-| Rust            | 0.074116   | 11.34x     |
-| C               | 0.081720   | 10.28x     |
-| Python (Par)    | 0.125782   | 6.68x      |
-| Python          | 0.840404   | 1.00x      |
+| Rust (Par)      | 0.002387   | 332.72x    |
+| C (Par)         | 0.002785   | 285.20x    |
+| Rust            | 0.074381   | 10.68x     |
+| C               | 0.081482   | 9.75x      |
+| Python (Par)    | 0.121374   | 6.54x      |
+| Python          | 0.794371   | 1.00x      |
