@@ -87,13 +87,7 @@ fn main() -> io::Result<()> {
                             p += 1;
                         }
                         len = p;
-                        // Digits are reversed in buffer[0..len], but for palindrome check
-                        // we just need to compare [0..half] with [half..] logically.
-                        // However, to be strictly correct with the "first half == second half" logic:
-                        // "1221" -> reversed is "1221". Palindrome check is same.
-                        // "123123" -> reversed is "321321".
-                        // First half "321", Second half "321". They match!
-                        // So we DON'T need to reverse the buffer to check equality of halves!
+                        // Buffer now contains the digits in reverse order
                     }
 
                     if len % 2 != 0 { continue; }
@@ -102,10 +96,10 @@ fn main() -> io::Result<()> {
                     // Check if first half equals second half
                     // Since the string is reversed in the buffer, 
                     // we are technically comparing the reversed second half with the reversed first half.
-                    // If they are equal, the original halves are equal.
-                    // Example: Number 1212. Buffer (rev): 2121.
-                    // Half 1: 21. Half 2: 21. Equal. Correct.
-                    
+                    // "123123" -> reversed is "321321".
+                    // First half "321", Second half "321". They match!
+                    // So, we don't need to reverse the buffer to check equality of halves
+
                     let (first, second) = buffer[..len].split_at(half);
                     if first == second {
                         local_sum += number;

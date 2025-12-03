@@ -15,32 +15,32 @@ typedef struct {
 
 // Shared State
 Chunk chunks[MAX_CHUNKS];
-int total_chunks = 0;
+size_t total_chunks = 0;
 atomic_size_t current_chunk_index = 0;
 
 // Optimized integer to string (base 10)
 // Returns length
 int fast_ultoa(unsigned long value, char* buffer) {
-    char temp[24];
-    char* p = temp;
+    char* p = buffer;
+    // Buffer will be filled in reverse order, but due to nature of the problem
+    // this gives us identical results.
     int len = 0;
     
     do {
-        *p++ = (char)((value % 10) + '0');
+        *p++ = (char)((value % 10) + '0'); // Write char
         value /= 10;
         len++;
     } while (value > 0);
     
-    // Reverse into buffer
-    for (int i = 0; i < len; i++) {
-        buffer[i] = *--p;
-    }
-    buffer[len] = '\0';
+    // Terminate the string
+    *p = '\0';
+    
     return len;
 }
 
 // Worker function
 void* process_queue(void* arg) {
+    (void)arg;
     long long local_invalid_count = 0;
     char buffer[64];
     
