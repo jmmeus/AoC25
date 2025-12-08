@@ -28,18 +28,18 @@ for line in file:
 # Now time to find all cartedian distances and keep them sorted
 # from smallest to largest, note that the squared distance is all
 # we need for relative comparisons
-distances: dict[float, tuple[Vector3D, Vector3D]] = {}
+distances: list[tuple[float, tuple[Vector3D, Vector3D]]] = []
 for i in range(len(coordinates)):
     for j in range(i + 1, len(coordinates)):
         dist = coordinates[i].cartesian_distance(coordinates[j])
-        distances[dist] = (coordinates[i], coordinates[j])
+        distances.append((dist, (coordinates[i], coordinates[j])))
 
-sorted_distances = dict(sorted(distances.items()))
+sorted_distances = sorted(distances)
 
 # Now process first N shortest distances, and create 'linked' clusters
 n = 1000
 clusters: list[set[Vector3D]] = []
-for dist, (point_a, point_b) in sorted_distances.items():
+for dist, (point_a, point_b) in sorted_distances:
     if n == 0:
         break
     # Check if either point is already in a cluster

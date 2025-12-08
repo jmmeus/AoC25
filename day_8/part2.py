@@ -31,19 +31,19 @@ for line in file:
 # Now time to find all cartedian distances and keep them sorted
 # from smallest to largest, note that the squared distance is all
 # we need for relative comparisons
-distances: dict[float, tuple[Vector3D, Vector3D]] = {}
+distances: list[tuple[float, tuple[Vector3D, Vector3D]]] = []
 for i in range(len(coordinates)):
     for j in range(i + 1, len(coordinates)):
         dist = coordinates[i].cartesian_distance(coordinates[j])
-        distances[dist] = (coordinates[i], coordinates[j])
+        distances.append((dist, (coordinates[i], coordinates[j])))
 
-sorted_distances = dict(sorted(distances.items()))
+sorted_distances = sorted(distances)
 
 # Now we simply process all distances, and should end up with
 # a single cluster at the end // track final 'merging' vectors
 clusters: list[set[Vector3D]] = []
 latest_pair: tuple[Vector3D, Vector3D] = (Vector3D(0,0,0), Vector3D(0,0,0))
-for dist, (point_a, point_b) in sorted_distances.items():
+for dist, (point_a, point_b) in sorted_distances:
     latest_pair = (point_a, point_b)
     # Check if either point is already in a cluster
     # We need to merge clusters if both points are in different clusters
